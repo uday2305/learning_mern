@@ -8,7 +8,7 @@ import {Profile} from './userProfile';
 import {HomePage} from './components/HomePage';
 
 import {Cart} from './components/Cart';
-import {CheckOut} from './components/CheckOut';
+import {CheckOut} from './checkout';
 import Orders from './components/Orders';
 import ProductCategories from './components/ProductCategories';
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { productActions } from "../actions";
+import { productActions, cartActions } from "../actions";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { displayAsCurrency } from "../helpers";
@@ -21,6 +21,15 @@ const ProductDetails = (props) => {
     if (productId) {
       props.getProducts();
       props.getProductDetails(productId);
+    }
+  };
+  const handleAddToCart = (e) => {
+    let productId = e.currentTarget.attributes["data-productid"]?.nodeValue;
+    if (productId) {
+      let cartItem = props.productList.products.find(function (obj) {
+        return obj._id === productId;
+      });
+      props.addItemToCart(cartItem);
     }
   };
   return (
@@ -57,7 +66,13 @@ const ProductDetails = (props) => {
                 <button className="btn text-white btn-warning me-3">
                   Buy Now
                 </button>
-                <button className="btn btn-primary">Add to Cart</button>
+                <button
+                  onClick={handleAddToCart}
+                  data-productid={props.productDetails._id}
+                  className="btn btn-primary"
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
             <div className="col-8">
@@ -90,7 +105,7 @@ const ProductDetails = (props) => {
                   </button>
                   <h6>
                     {product.name}
-                    <span class="float-end">
+                    <span className="float-end">
                       {displayAsCurrency(product.discountPrice)}
                     </span>
                   </h6>
@@ -114,6 +129,7 @@ function mapState(state) {
 const actionCreators = {
   getProducts: productActions.getProducts,
   getProductDetails: productActions.getProductDetails,
+  addItemToCart: cartActions.addItemToCart,
 };
 
 const connectedProductDetails = connect(

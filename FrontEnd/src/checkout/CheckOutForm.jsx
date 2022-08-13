@@ -4,29 +4,13 @@ const CheckOutForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid()) {
-      props.handleSubmit(values);
+      let payload = {shippingAddress:{}};
+      payload.shippingAddress = {...values};
+      props.handleSubmit(payload);
     }
   };
   const { values, errors, bindField, isValid } = useForm({
     validations: {
-      firstName: {
-        required: {
-          value: true,
-          message: "First Name is required",
-        },
-      },
-      lastName: {
-        required: {
-          value: true,
-          message: "Last Name is required",
-        },
-      },
-      email: {
-        required: {
-          value: true,
-          message: "Email is required",
-        },
-      },
       streetAddress: {
         required: {
           value: true,
@@ -57,9 +41,6 @@ const CheckOutForm = (props) => {
       },
     },
     initialValues: {
-      firstName: props.userProfile?.profile?.firstName,
-      lastName: props.userProfile?.profile?.lastName,
-      email: props.userProfile?.profile?.email,
       streetAddress: props.userProfile?.profile?.address.streetAddress || "",
       city: props.userProfile?.profile?.address.city || "",
       state: props.userProfile?.profile?.address.state || "",
@@ -69,55 +50,7 @@ const CheckOutForm = (props) => {
 
   return (
     <form className="m-3" onSubmit={handleSubmit}>
-      <h2 className="mb-3">User Info</h2>
-
-      <div className="mb-3">
-        <label htmlFor="register-first-name" className="form-label">
-          First Name
-        </label>
-        <input
-          type="text"
-          className={`form-control ${errors.firstName ? "is-invalid" : ""}`}
-          {...bindField("firstName")}
-          name="firstName"
-          id="firstName"
-          aria-describedby="firstName"
-        />
-        {errors.firstName && (
-          <div className="invalid-feedback">{errors.firstName}</div>
-        )}
-      </div>
-      <div className="mb-3">
-        <label htmlFor="lastName" className="form-label">
-          Last Name
-        </label>
-        <input
-          type="text"
-          className={`form-control ${errors.lastName ? "is-invalid" : ""}`}
-          {...bindField("lastName")}
-          name="lastName"
-          id="lastName"
-          aria-describedby="lastName"
-        />
-        {errors.lastName && (
-          <div className="invalid-feedback">{errors.lastName}</div>
-        )}
-      </div>
-      <div className="mb-3">
-        <label htmlFor="email" className="form-label">
-          Email address
-        </label>
-        <input
-          type="email"
-          className={`form-control ${errors.email ? "is-invalid" : ""}`}
-          {...bindField("email")}
-          name="email"
-          id="email"
-          aria-describedby="emailHelp"
-        />
-        {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-      </div>
-      <h2 className="mb-3">Shipping Address</h2>
+      <h2 className="mb-3">Confirm Shipping Address</h2>
       <div className="mb-3">
         <label htmlFor="streetAddress" className="form-label">
           Street Address
