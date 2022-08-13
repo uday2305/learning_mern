@@ -1,0 +1,176 @@
+###Register
+POST http://localhost:8080/api/v1/users/register HTTP/1.1
+content-type: application/json
+
+# {
+# 	"firstName":"john",
+# 	"lastName":"walker",
+# 	"password":"12345678",
+# 	"email":"john.walker@gmail.com"
+# }
+{
+	"firstName":"chivas",
+	"lastName":"regal",
+	"isAdmin":true,
+	"password":"12345678",
+	"email":"chivas.regal@gmail.com"
+}
+
+### User Login Service
+# @name userLoginAuth
+POST http://localhost:8080/api/v1/users/login HTTP/1.1
+content-type: application/json
+
+# {
+# 	"email":"john.walker@gmail.com",
+# 	"password":"12345678"
+# }
+
+{
+	"email":"chivas.regal@gmail.com",
+	"password":"12345678"
+}
+
+#### Variable Response
+@accessToken = {{userLoginAuth.response.body.accessToken}}
+
+###Get Profile
+GET http://localhost:8080/api/v1/profile HTTP/1.1
+Authorization: {{accessToken}}
+
+###Delete Profile Image
+DELETE  http://localhost:8080/api/v1/profile/image HTTP/1.1
+Authorization: {{accessToken}}
+
+###Update Profile Image
+PATCH  http://localhost:8080/api/v1/profile/image HTTP/1.1
+Authorization: {{accessToken}}
+content-type: application/json
+
+{
+	"profile":{
+		"image":"/some-path"
+	}
+}
+
+###Update Profile Address
+PATCH  http://localhost:8080/api/v1/profile/address HTTP/1.1
+Authorization: {{accessToken}}
+content-type: application/json
+
+{
+	"profile":{
+		"address":{
+			"streetAddress":"84 5th Avenue",
+			"city":"New York",
+			"state":"New York",
+			"zipcode":"40034"
+		}
+	}
+}
+
+###Get Homepage Banner
+GET http://localhost:8080/api/v1/homepage/banner HTTP/1.1
+
+###Get Homepage categories
+GET http://localhost:8080/api/v1/homepage/categories HTTP/1.1
+
+###Get Homepage products
+GET http://localhost:8080/api/v1/homepage/products HTTP/1.1
+
+###Get list of products
+GET http://localhost:8080/api/v1/products HTTP/1.1
+
+###Get a products details by Id
+GET http://localhost:8080/api/v1/products/62ec863455dd5ef3bc41c45e HTTP/1.1
+
+### Add a product by Admin
+POST http://localhost:8080/api/v1/admin/products HTTP/1.1
+Authorization: {{accessToken}}
+content-type: application/json
+
+{
+	"name":"Rainbow Square Fidget Toy",
+	"category":"toys",
+	"price":9.99,
+	"discountPrice":6.99,
+	"description":"Silicone Bubble Popping Game",
+	"image":"https://target.scene7.com/is/image/Target/GUEST_ab3dc3ae-274c-41f0-af4a-ba97ba7332a2?wid=325&hei=325&qlt=80&fmt=pjpeg",
+	"isTopProduct":false
+}
+
+### Delete a product by Admin
+DELETE http://localhost:8080/api/v1/admin/products/62ec863455dd5ef3bc41c45e HTTP/1.1
+Authorization: {{accessToken}}
+
+### Update a product by Admin
+PATCH http://localhost:8080/api/v1/admin/products/62ec863455dd5ef3bc41c45e HTTP/1.1
+Authorization: {{accessToken}}
+content-type: application/json
+
+{
+	"product":{
+		"isTopProduct":true
+	}
+}
+
+### LoggedIn Checkout
+POST http://localhost:8080/api/v1/checkout HTTP/1.1
+Authorization: {{accessToken}}
+content-type: application/json
+
+{
+	"cart":[
+		{
+			"productId":"62ec86cd55dd5ef3bc41c46a",
+			"quantity": 1
+		},
+		{
+			"productId":"62ec863455dd5ef3bc41c45e",
+			"quantity": 2
+		}
+	]
+}
+
+### Guest User Checkout
+POST http://localhost:8080/api/v1/checkout HTTP/1.1
+content-type: application/json
+
+{
+	"user":{
+		"firstName":"virat",
+		"lastName":"kohli",
+		"password":"12345678",
+		"email":"virat.kohli@gmail.com"
+	},
+	"cart":[
+		{
+			"productId":"62ec86cd55dd5ef3bc41c46a",
+			"quantity": 1
+		},
+		{
+			"productId":"62ec863455dd5ef3bc41c45e",
+			"quantity": 2
+		}
+	]
+}
+
+###Get Orders (LoggedIn User/Admin)
+GET http://localhost:8080/api/v1/orders HTTP/1.1
+Authorization: {{accessToken}}
+
+### Delete a Order by ID - Admin
+DELETE  http://localhost:8080/api/v1/admin/orders/62ec9d77249ee1919d1c0019 HTTP/1.1
+Authorization: {{accessToken}}
+
+### Update a Order by ID - Admin
+PATCH  http://localhost:8080/api/v1/orders/62ec9e58249ee1919d1c0030 HTTP/1.1
+Authorization: {{accessToken}}
+content-type: application/json
+
+{
+	"orders": {
+		"isDelivered":true
+	}
+
+}
