@@ -10,7 +10,7 @@ exports.validateLogin = async (req, res) => {
         let user = await userModel.findOne({ email: req.body.email }).exec();
         if (user != null && cryptoProvider.comparePassword(req.body.password, user.password)) {
             const token = jwt.sign({ _id: user._id }, config.secret)
-            let response = { 'status': 'success', 'message': 'user logged in successfully', 'accessToken': token };
+            let response = { 'status': 'success', 'message': 'user logged in successfully', 'accessToken': token,'isAdmin':user.isAdmin, 'firstName':user.firstName };
             res.status(200).json(response);
         }
         else {
