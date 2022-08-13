@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { userActions, alertActions } from "../actions";
+import { userActions, alertActions } from "./../../actions";
 import CheckOutGuestForm from "./CheckOutGuestForm";
 import { CheckOutLoggedIn } from "./CheckOutLoggedIn";
 

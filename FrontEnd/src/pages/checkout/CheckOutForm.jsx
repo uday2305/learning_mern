@@ -1,11 +1,11 @@
 import React from "react";
-import { useForm } from "../hooks/useForm";
+import { useForm } from "../../hooks/useForm";
 const CheckOutForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid()) {
-      let payload = {shippingAddress:{}};
-      payload.shippingAddress = {...values};
+      let payload = { shippingAddress: {} };
+      payload.shippingAddress = { ...values };
       props.handleSubmit(payload);
     }
   };
