@@ -33,7 +33,7 @@ const Cart = (props) => {
       <div className="my-5 d-flex">
         <h1> Cart</h1>
       </div>
-      {cartItems?.items?.length !== 0 ? (
+      {cartItems && cartItems.items && cartItems?.items?.length !== 0 ? (
         <div>
           <ul className="list-group">
             {cartItems?.items?.map((product, index) => (
