@@ -21,7 +21,8 @@ const HomePage = (props) => {
   };
   return (
     <div className="container">
-      {props.homePageBannerProductList ? (
+      {props.homePageBannerProductList &&
+      props.homePageBannerProductList?.products ? (
         <div
           id="carouselExampleIndicators"
           className="carousel slide my-2"
@@ -52,7 +53,7 @@ const HomePage = (props) => {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src={props.homePageBannerProductList.products[0].image}
+                src={props.homePageBannerProductList?.products[0]?.image}
                 className="d-block w-100"
                 height="500"
                 alt="..."
@@ -60,7 +61,7 @@ const HomePage = (props) => {
             </div>
             <div className="carousel-item">
               <img
-                src={props.homePageBannerProductList.products[1].image}
+                src={props.homePageBannerProductList?.products[1]?.image}
                 height="500"
                 className="d-block w-100"
                 alt="..."
@@ -68,7 +69,7 @@ const HomePage = (props) => {
             </div>
             <div className="carousel-item">
               <img
-                src={props.homePageBannerProductList.products[2].image}
+                src={props.homePageBannerProductList?.products[2]?.image}
                 className="d-block w-100"
                 alt="..."
                 height="500"

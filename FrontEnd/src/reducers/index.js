@@ -1,33 +1,26 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import { alert } from './alertReducer';
+import { alert } from "./alertReducer";
 import {
-    productAddReducer,
-    productDeleteReducer,
-    productDetailsReducer,
-    productListReducer,
-    productUpdateReducer,
-    homePageBannerReducer,
-  } from './productReducer';
- /* import {
-    orderListReducer,
-    orderDetailsReducer,
-    orderUpdateReducer,
-    orderDeleteReducer,
-  } from './reducers/orderReducers';*/
+  productAddReducer,
+  productDeleteReducer,
+  productDetailsReducer,
+  productListReducer,
+  productUpdateReducer,
+  homePageBannerReducer,
+} from "./productReducer";
+import { orderListReducer, createOrderReducer } from "./orderReducer";
 
-  import{
-    getCartItemsReducer,
-  }from './cartReducer'
-  import {
-    userAuthenticationReducer,
-    userRegisterReducer,
-    userProfileDetailsReducer,
-    userProfileImageUpdateReducer,
-    userProfileImageDeleteReducer,
-    userProfileAddressUpdateReducer,
-  } from './userReducers';
-  import { redirect } from './redirectReducer';
+import { getCartItemsReducer } from "./cartReducer";
+import {
+  userAuthenticationReducer,
+  userRegisterReducer,
+  userProfileDetailsReducer,
+  userProfileImageUpdateReducer,
+  userProfileImageDeleteReducer,
+  userProfileAddressUpdateReducer,
+} from "./userReducers";
+import { redirect } from "./redirectReducer";
 const rootReducer = combineReducers({
   alert,
   redirect,
@@ -46,13 +39,13 @@ const rootReducer = combineReducers({
   productDelete: productDeleteReducer,
   homePageBanner: homePageBannerReducer,
   // Orders
-  // orderList: orderListReducer,
-  // orderDetails: orderDetailsReducer,
+  orderList: orderListReducer,
+  createOrder: createOrderReducer,
   // orderUpdate: orderUpdateReducer,
   // orderDelete: orderDeleteReducer,
 
   //Cart
-  getCartItems:getCartItemsReducer,
-})
+  getCartItems: getCartItemsReducer,
+});
 
 export default rootReducer;

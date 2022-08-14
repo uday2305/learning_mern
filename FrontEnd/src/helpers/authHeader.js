@@ -8,6 +8,6 @@ export function authHeader() {
       Authorization: user.accessToken,
     };
   } else {
-    return {};
+    return { "Content-Type": "application/json" };
   }
 }

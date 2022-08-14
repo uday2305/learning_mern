@@ -4,7 +4,7 @@ const router = require('./routes/router');
 const bodyParser = require('body-parser');
 const cors=require("cors");
 //Connecting to our mongodb shop24x7 database 
-mongoose.connect('mongodb://127.0.0.1:27017/shop24x7',()=>{
+mongoose.connect('mongodb://127.0.0.1:27017/testShop',()=>{
     console.log('Database is connected');
 });
 

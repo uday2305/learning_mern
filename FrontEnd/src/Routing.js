@@ -10,15 +10,16 @@ import { CheckOut } from "./pages/checkout";
 
 import { HomePage } from "./components/HomePage";
 import { Cart } from "./components/Cart";
-import Orders from "./components/Orders";
+import { Orders } from "./components/Orders";
 import ProductCategories from "./components/ProductCategories";
 import { ProductDetails } from "./components/ProductDetails";
+import OrderDetails from "./components/OrderDetails";
 import {
   AddProduct,
   EditProduct,
   ManageProducts,
 } from "./pages/productManagement";
-import ManageOrders from "./components/ManageOrders";
+import { ManageOrders } from "./components/ManageOrders";
 
 import { PrivateRoute } from "./helperComponents";
 import { history } from "./helpers";
@@ -33,7 +34,7 @@ function Routing() {
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/checkout" element={<CheckOut />}></Route>
-          <Route path="/orders" element={<Orders />}></Route>
+
           <Route path="/categories" element={<ProductCategories />}></Route>
           <Route
             path="/categories/:category_id"
@@ -64,6 +65,12 @@ function Routing() {
           </Route>
           <Route path="/admin/orders" element={<PrivateRoute />}>
             <Route path="/admin/orders" element={<ManageOrders />} />
+          </Route>
+          <Route path="/orders" element={<PrivateRoute />}>
+            <Route path="/orders" element={<Orders />}></Route>
+          </Route>
+          <Route path="/orders/:order_id" element={<PrivateRoute />}>
+            <Route path="/orders/:order_id" element={<OrderDetails />}></Route>
           </Route>
         </Routes>
       </main>

@@ -1,0 +1,113 @@
+[{
+  "_id": {
+    "$oid": "62ec863455dd5ef3bc41c45e"
+  },
+  "name": "Nike Revolution 5",
+  "category": "shoes",
+  "price": 66,
+  "discountPrice": 54.97,
+  "description": "Women's Road Running Shoes best in class",
+  "image": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/cpnziuszxz5xgcffqjei/revolution-5-womens-road-running-shoes-hC41Vf.png",
+  "isTopProduct": true,
+  "createdOn": {
+    "$date": {
+      "$numberLong": "1659668020091"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62ec86cd55dd5ef3bc41c46a"
+  },
+  "name": "Adidas Super Star Shoes",
+  "category": "shoes",
+  "price": 95,
+  "discountPrice": 94.99,
+  "description": "Women's Originals Shoes",
+  "image": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/4e894c2b76dd4c8e9013aafc016047af_9366/Superstar_Shoes_White_FV3284_01_standard.jpg",
+  "isTopProduct": true,
+  "createdOn": {
+    "$date": {
+      "$numberLong": "1659668173240"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62ec874255dd5ef3bc41c470"
+  },
+  "name": "Reebok Nano X2",
+  "category": "shoes",
+  "price": 135,
+  "discountPrice": 134.99,
+  "description": "Men's Training Shoes",
+  "image": "https://assets.reebok.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/304a013a4c944d228e05aeb70164b486_9366/Nano_X2_TR_Adventure_Men's_Training_Shoes_Grey_GY2117_01_standard.jpg",
+  "isTopProduct": true,
+  "createdOn": {
+    "$date": {
+      "$numberLong": "1659668290624"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62ec89048ce4ce194aa9da8c"
+  },
+  "name": "Sketchers Uno 2",
+  "category": "shoes",
+  "price": 95,
+  "discountPrice": 94.99,
+  "description": "Women's tokidoki Shoes",
+  "image": "https://www.skechers.com/dw/image/v2/BDCN_PRD/on/demandware.static/-/Sites-skechers-master/default/dwdeab97ce/images/large/155226_MLT.jpg?sw=289",
+  "isTopProduct": true,
+  "createdOn": {
+    "$date": {
+      "$numberLong": "1659668740906"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62ec8f3988c640617b6e3cc4"
+  },
+  "name": "Rainbow Square Fidget Toy",
+  "category": "toys",
+  "price": 9.99,
+  "discountPrice": 6.99,
+  "description": "Silicone Bubble Popping Game",
+  "image": "https://target.scene7.com/is/image/Target/GUEST_ab3dc3ae-274c-41f0-af4a-ba97ba7332a2?wid=325&hei=325&qlt=80&fmt=pjpeg",
+  "isTopProduct": false,
+  "createdOn": {
+    "$date": {
+      "$numberLong": "1659670329581"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62f57af3ef2bf3fa18eecb97"
+  },
+  "name": "Dell Inspiron",
+  "category": "Electronics",
+  "price": 899,
+  "discountPrice": 799,
+  "description": "Gaming laptop with all latest configuration",
+  "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6432/6432549_sd.jpg",
+  "isTopProduct": false,
+  "createdOn": {
+    "$date": {
+      "$numberLong": "1660254963457"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62f57b79ef2bf3fa18eecb9f"
+  },
+  "name": "Lenovo ThinkVision Monitor",
+  "category": "Electronics",
+  "price": 249,
+  "discountPrice": 199,
+  "description": "The Lenovo™ ThinkVision® T24i-10 is a professional collection of next-generation displays perfectly suited for all your corporate endeavors. Delivering an immersive, borderless Full-HD experience, you’re guaranteed a bright start to the day, Monday through Friday. Moreover, it’s safe to say your office is probably full of cables, plugging-in has never been easier with this series’ available VGA, DisplayPort™, and HDMI™ ports. Additionally, 4 USB ports matched with an audio port maximize your productivity with complete access to your favorite accessories. More productive 9 to 5 with one of our these models.",
+  "image": "https://static.lenovo.com/mea/campaign/newmonitors/images/T24i/T24i-1.png",
+  "isTopProduct": false,
+  "createdOn": {
+    "$date": {
+      "$numberLong": "1660255097357"
+    }
+  }
+}]

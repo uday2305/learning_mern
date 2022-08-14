@@ -1,15 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
-import { connect } from "react-redux";
-import { userActions, alertActions } from "./../../actions";
+import { connect, useSelector } from "react-redux";
+import { userActions, alertActions, orderActions } from "./../../actions";
 import CheckOutGuestForm from "./CheckOutGuestForm";
 import { CheckOutLoggedIn } from "./CheckOutLoggedIn";
 
 function CheckOut(props) {
   const { redirectTo } = props;
-
-  const handleSubmit = (formValues) => {
-    console.log(JSON.stringify(formValues));
+  const cartItems = useSelector((state) => state.getCartItems);
+  const handleSubmit = (payload) => {
+    let cart = cartItems?.items?.map(function (item) {
+      return {
+        productId: item._id,
+        productName: item.name,
+        quantity: item.quantity,
+        price: item.discountPrice,
+      };
+    });
+    payload.cart = cart;
+    props.createOrder(payload);
   };
 
   if (redirectTo) {
@@ -43,6 +52,7 @@ function mapState(state) {
 
 const actionCreators = {
   getProfileDetails: userActions.getUserProfile,
+  createOrder: orderActions.createOrder,
   clearAlerts: alertActions.clear,
 };
 
