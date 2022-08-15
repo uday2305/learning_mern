@@ -170,7 +170,17 @@ const HomePage = (props) => {
                       alt={product.name}
                       width="100%"
                       height="225"
+                      className="home-top-products-image"
                     />
+                    {product.isTopProduct ? (
+                      <div className="home-top-selling p-1 bg-warning">
+                        <span className="ms-2 text-secondary">
+                          Top Selling Product
+                        </span>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </Link>
                   <div className="d-flex py-2">
                     <div className="w-50">
