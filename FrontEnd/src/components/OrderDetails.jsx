@@ -10,11 +10,9 @@ const OrderDetails = (props) => {
   let pathName = usePathname();
   let orderId = pathName.substring("/orders/".length);
   const storedOrders = useSelector((state) => state.orderList);
-  console.log(storedOrders);
   let storedOrder = storedOrders.orderList.orders.find(
     (order) => order._id === orderId
   );
-  console.log(storedOrder);
   return (
     <div className="container">
       <div className="my-5 d-flex">

@@ -4,6 +4,7 @@ import { orderActions, alertActions } from "../actions";
 import { connect } from "react-redux";
 
 const Orders = (props) => {
+  let { alert } = props;
   useEffect(() => {
     // code to run on component mount
     props.getOrders();

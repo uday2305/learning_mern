@@ -106,7 +106,6 @@ function getOrders() {
 
     orderService.getOrders().then(
       (orderList) => {
-        console.log("actions", orderList);
         orderList.orders = orderList.orders.sort(
           (a, b) => Number(a.isDelivered) - Number(b.isDelivered)
         ); //not delivered first

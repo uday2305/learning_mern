@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { productActions, cartActions } from "../actions";
 import { connect } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { displayAsCurrency } from "../helpers";
 
 const ProductDetails = (props) => {
+  let navigate = useNavigate();
+
   const usePathname = () => {
     const location = useLocation();
     return location.pathname;
@@ -32,6 +34,17 @@ const ProductDetails = (props) => {
       props.addItemToCart(cartItem);
     }
   };
+  const handleBuyNow = (e) => {
+    let productId = e.currentTarget.attributes["data-productid"]?.nodeValue;
+    if (productId) {
+      let cartItem = props.productList.products.find(function (obj) {
+        return obj._id === productId;
+      });
+      props.addItemToCart(cartItem);
+      navigate("/checkout");
+    }
+  };
+
   return (
     <div className="mt-3 container">
       {props.productDetails ? (
@@ -63,7 +76,11 @@ const ProductDetails = (props) => {
                 {displayAsCurrency(props.productDetails.price)}
               </h3>
               <div className="my-3">
-                <button className="btn text-white btn-warning me-3">
+                <button
+                  className="btn text-white btn-warning me-3"
+                  onClick={handleBuyNow}
+                  data-productid={props.productDetails._id}
+                >
                   Buy Now
                 </button>
                 <button
