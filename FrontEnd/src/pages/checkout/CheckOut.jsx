@@ -1,18 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
-import { connect } from "react-redux";
-import { userActions, alertActions } from "../actions";
-import CheckOutForm from "./CheckOutForm";
+import { connect, useSelector } from "react-redux";
+import { userActions, alertActions, orderActions } from "./../../actions";
+import CheckOutGuestForm from "./CheckOutGuestForm";
+import { CheckOutLoggedIn } from "./CheckOutLoggedIn";
 
 function CheckOut(props) {
   const { redirectTo } = props;
-  useEffect(() => {
-    // code to run on component mount
-    props.getProfileDetails();
-  }, []);
-
-  const handleSubmit = (formValues) => {
-    console.log(formValues);
+  const cartItems = useSelector((state) => state.getCartItems);
+  const handleSubmit = (payload) => {
+    let cart = cartItems?.items?.map(function (item) {
+      return {
+        productId: item._id,
+        productName: item.name,
+        quantity: item.quantity,
+        price: item.discountPrice,
+      };
+    });
+    payload.cart = cart;
+    props.createOrder(payload);
   };
 
   if (redirectTo) {
@@ -20,24 +26,16 @@ function CheckOut(props) {
   }
   return (
     <div className="mt-5 container">
-      <div className="p-2 mx-5">
+      <div className="p-2 m-5">
         {props.alert.message && (
           <div className={`alert ${props.alert.type}`}>
             {props.alert.message}
           </div>
         )}
         {!props.user ? (
-          <div>
-            <h4>empty form</h4>
-            <CheckOutForm handleSubmit={handleSubmit} userProfile={null} />
-          </div>
-        ) : props.userProfile ? (
-          <CheckOutForm
-            handleSubmit={handleSubmit}
-            userProfile={props.userProfile}
-          />
+          <CheckOutGuestForm handleSubmit={handleSubmit} />
         ) : (
-          ""
+          <CheckOutLoggedIn handleSubmit={handleSubmit} />
         )}
       </div>
     </div>
@@ -54,6 +52,7 @@ function mapState(state) {
 
 const actionCreators = {
   getProfileDetails: userActions.getUserProfile,
+  createOrder: orderActions.createOrder,
   clearAlerts: alertActions.clear,
 };
 

@@ -2,6 +2,7 @@ export const cartService = {
   addItemToCart,
   getCartItems,
   removeItemFromCart,
+  clearCartItems,
 };
 
 async function addItemToCart(payload) {
@@ -42,4 +43,11 @@ async function removeItemFromCart(productId) {
   } else {
     return Promise.resolve([]);
   }
+}
+
+async function clearCartItems() {
+  let cart = {};
+  cart.items = [];
+  localStorage.setItem("cart", JSON.stringify(cart));
+  return Promise.resolve([]);
 }

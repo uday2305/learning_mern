@@ -53,3 +53,11 @@ code {
   padding: 0.2em;
   height: 2em;
 }
+.home-top-products-image{
+  position: relative;
+}
+.home-top-selling{
+  position: absolute;
+    top: 5px;
+    left: 0px;
+}

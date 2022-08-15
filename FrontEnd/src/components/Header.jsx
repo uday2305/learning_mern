@@ -38,11 +38,6 @@ function Header(props) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/categories" className="nav-link">
-                  Categories
-                </Link>
-              </li>
-              <li className="nav-item">
                 <form className="d-flex" role="search">
                   <input
                     className="form-control me-2"
@@ -79,7 +74,7 @@ function Header(props) {
                       <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                     </svg>
                   </span>
-                  {cart?.items?.length !== 0 ? (
+                  {cart && cart.items && cart?.items?.length !== 0 ? (
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       {cart?.items?.length}
                       <span className="visually-hidden">Items</span>
@@ -127,7 +122,7 @@ function Header(props) {
                         <hr className="dropdown-divider" />
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/">
+                        <Link className="dropdown-item" to="/logout">
                           Logout
                         </Link>
                       </li>
@@ -151,7 +146,7 @@ function Header(props) {
                         <hr className="dropdown-divider" />
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/">
+                        <Link className="dropdown-item" to="/logout">
                           Logout
                         </Link>
                       </li>

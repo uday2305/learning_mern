@@ -1,10 +1,10 @@
 import React from 'react';
-import Welcome from '../components/Welcome';
-import { useForm } from '../hooks/useForm';
+import Welcome from '../../components/Welcome';
+import { useForm } from '../../hooks/useForm';
 import { Link,Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { userActions,alertActions } from '../actions';
+import { userActions,alertActions } from '../../actions';
 
 function Login(props) {
 

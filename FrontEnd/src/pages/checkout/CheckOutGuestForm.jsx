@@ -1,13 +1,33 @@
 import React from "react";
-import { useForm } from "../hooks/useForm";
-const CheckOutForm = (props) => {
+import { useForm } from "../../hooks/useForm";
+const CheckOutGuestForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValid()) {
-      props.handleSubmit(values);
+      if (values["password"] === values["confirmPassword"]) {
+        let payload = { user: {}, shippingAddress: {} };
+        payload.shippingAddress = {
+          streetAddress: values.streetAddress,
+          zipcode: values.zipcode,
+          city: values.city,
+          state: values.state,
+        };
+        payload.user = {
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          password: values.password,
+        };
+        props.handleSubmit(payload);
+      } else {
+        setErrors({
+          confirmPassword: "Password and confirm password are not matching",
+          password: "Password and confirm password are not matching",
+        });
+      }
     }
   };
-  const { values, errors, bindField, isValid } = useForm({
+  const { values, errors, setErrors, bindField, isValid } = useForm({
     validations: {
       firstName: {
         required: {
@@ -25,6 +45,26 @@ const CheckOutForm = (props) => {
         required: {
           value: true,
           message: "Email is required",
+        },
+      },
+      password: {
+        required: {
+          value: true,
+          message: "password can't be empty",
+        },
+        custom: {
+          validate: (value) => value.length >= 8,
+          message: "The password needs to be atleast 8 Chars",
+        },
+      },
+      confirmPassword: {
+        required: {
+          value: true,
+          message: "confirm password can't be empty",
+        },
+        custom: {
+          validate: (value) => value.length >= 8,
+          message: "The password needs to be atleast 8 chars",
         },
       },
       streetAddress: {
@@ -57,13 +97,15 @@ const CheckOutForm = (props) => {
       },
     },
     initialValues: {
-      firstName: props.userProfile?.profile?.firstName,
-      lastName: props.userProfile?.profile?.lastName,
-      email: props.userProfile?.profile?.email,
-      streetAddress: props.userProfile?.profile?.address.streetAddress || "",
-      city: props.userProfile?.profile?.address.city || "",
-      state: props.userProfile?.profile?.address.state || "",
-      zipcode: props.userProfile?.profile?.address.zipcode || "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      streetAddress: "",
+      city: "",
+      state: "",
+      zipcode: "",
     },
   });
 
@@ -116,6 +158,38 @@ const CheckOutForm = (props) => {
           aria-describedby="emailHelp"
         />
         {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+      </div>
+      <div className="mb-3">
+        <label htmlFor="password" className="form-label">
+          Password
+        </label>
+        <input
+          type="password"
+          className={`form-control ${errors.password ? "is-invalid" : ""}`}
+          {...bindField("password")}
+          name="password"
+          id="password"
+        />
+        {errors.password && (
+          <div className="invalid-feedback">{errors.password}</div>
+        )}
+      </div>
+      <div className="mb-3">
+        <label htmlFor="confirmPassword" className="form-label">
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          className={`form-control ${
+            errors.confirmPassword ? "is-invalid" : ""
+          }`}
+          {...bindField("confirmPassword")}
+          name="confirmPassword"
+          id="confirmPassword"
+        />
+        {errors.confirmPassword && (
+          <div className="invalid-feedback">{errors.confirmPassword}</div>
+        )}
       </div>
       <h2 className="mb-3">Shipping Address</h2>
       <div className="mb-3">
@@ -189,4 +263,4 @@ const CheckOutForm = (props) => {
     </form>
   );
 };
-export default CheckOutForm;
+export default CheckOutGuestForm;

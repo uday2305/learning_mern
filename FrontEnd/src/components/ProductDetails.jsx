@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { productActions } from "../actions";
+import { productActions, cartActions } from "../actions";
 import { connect } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { displayAsCurrency } from "../helpers";
 
 const ProductDetails = (props) => {
+  let navigate = useNavigate();
+
   const usePathname = () => {
     const location = useLocation();
     return location.pathname;
@@ -23,6 +25,26 @@ const ProductDetails = (props) => {
       props.getProductDetails(productId);
     }
   };
+  const handleAddToCart = (e) => {
+    let productId = e.currentTarget.attributes["data-productid"]?.nodeValue;
+    if (productId) {
+      let cartItem = props.productList.products.find(function (obj) {
+        return obj._id === productId;
+      });
+      props.addItemToCart(cartItem);
+    }
+  };
+  const handleBuyNow = (e) => {
+    let productId = e.currentTarget.attributes["data-productid"]?.nodeValue;
+    if (productId) {
+      let cartItem = props.productList.products.find(function (obj) {
+        return obj._id === productId;
+      });
+      props.addItemToCart(cartItem);
+      navigate("/checkout");
+    }
+  };
+
   return (
     <div className="mt-3 container">
       {props.productDetails ? (
@@ -54,10 +76,20 @@ const ProductDetails = (props) => {
                 {displayAsCurrency(props.productDetails.price)}
               </h3>
               <div className="my-3">
-                <button className="btn text-white btn-warning me-3">
+                <button
+                  className="btn text-white btn-warning me-3"
+                  onClick={handleBuyNow}
+                  data-productid={props.productDetails._id}
+                >
                   Buy Now
                 </button>
-                <button className="btn btn-primary">Add to Cart</button>
+                <button
+                  onClick={handleAddToCart}
+                  data-productid={props.productDetails._id}
+                  className="btn btn-primary"
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
             <div className="col-8">
@@ -90,7 +122,7 @@ const ProductDetails = (props) => {
                   </button>
                   <h6>
                     {product.name}
-                    <span class="float-end">
+                    <span className="float-end">
                       {displayAsCurrency(product.discountPrice)}
                     </span>
                   </h6>
@@ -114,6 +146,7 @@ function mapState(state) {
 const actionCreators = {
   getProducts: productActions.getProducts,
   getProductDetails: productActions.getProductDetails,
+  addItemToCart: cartActions.addItemToCart,
 };
 
 const connectedProductDetails = connect(

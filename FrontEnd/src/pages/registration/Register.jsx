@@ -1,9 +1,9 @@
 import React from 'react';
-import Welcome from '../components/Welcome';
-import { useForm } from '../hooks/useForm';
+import Welcome from '../../components/Welcome';
+import { useForm } from '../../hooks/useForm';
 import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userActions,alertActions } from '../actions';
+import { userActions,alertActions } from '../../actions';
 
 function Registration(props) {
   const { registering,alert,redirectTo } = props;
