@@ -38,11 +38,6 @@ function Header(props) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/categories" className="nav-link">
-                  Categories
-                </Link>
-              </li>
-              <li className="nav-item">
                 <form className="d-flex" role="search">
                   <input
                     className="form-control me-2"

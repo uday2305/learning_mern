@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { alertActions } from "../actions";
+import { useSelector, connect } from "react-redux";
 import { displayAsCurrency } from "../helpers";
+
 const OrderDetails = (props) => {
+  useEffect(() => {
+    props.clearAlerts();
+  });
   const usePathname = () => {
     const location = useLocation();
     return location.pathname;
@@ -58,5 +63,13 @@ const OrderDetails = (props) => {
     </div>
   );
 };
+function mapState(state) {
+  return {};
+}
 
-export default OrderDetails;
+const actionCreators = {
+  clearAlerts: alertActions.clear,
+};
+
+const connectedOrderDetails = connect(mapState, actionCreators)(OrderDetails);
+export { connectedOrderDetails as OrderDetails };

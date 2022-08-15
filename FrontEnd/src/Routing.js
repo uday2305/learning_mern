@@ -12,9 +12,9 @@ import { HomePage } from "./components/HomePage";
 import { Cart } from "./components/Cart";
 import { Orders } from "./components/Orders";
 import { Logout } from "./components/Logout";
-import ProductCategories from "./components/ProductCategories";
+import { ProductCategories } from "./components/ProductCategories";
 import { ProductDetails } from "./components/ProductDetails";
-import OrderDetails from "./components/OrderDetails";
+import { OrderDetails } from "./components/OrderDetails";
 import {
   AddProduct,
   EditProduct,
