@@ -10,7 +10,12 @@ import {
   homePageBannerReducer,
 } from "./productReducer";
 import { orderListReducer, createOrderReducer } from "./orderReducer";
-
+import {
+  userListReducer,
+  addUserReducer,
+  editUserReducer,
+  userDetailsReducer,
+} from "./adminUserReducer";
 import { getCartItemsReducer } from "./cartReducer";
 import {
   userAuthenticationReducer,
@@ -44,6 +49,11 @@ const rootReducer = combineReducers({
   // orderUpdate: orderUpdateReducer,
   // orderDelete: orderDeleteReducer,
 
+  //manageusers
+  userList: userListReducer,
+  addUser: addUserReducer,
+  editUser: editUserReducer,
+  userDetails: userDetailsReducer,
   //Cart
   getCartItems: getCartItemsReducer,
 });
