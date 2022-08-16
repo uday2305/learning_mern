@@ -9,6 +9,10 @@ export const userService = {
   updateProfileAddress,
   updateProfilePicture,
   deleteProfilePicture,
+  editUser,
+  deleteUser,
+  getUsers,
+  getUserDetails,
 };
 
 async function login(email, password) {
@@ -92,6 +96,49 @@ async function deleteProfilePicture() {
   };
 
   return fetch(`${config.API_URL}/profile/image`, requestOptions).then(
+    handleResponse
+  );
+}
+
+async function editUser(payload, userId) {
+  let requestBody = {};
+  requestBody.user = payload;
+  const requestOptions = {
+    method: "PATCH",
+    body: JSON.stringify(requestBody),
+    headers: authHeader(),
+  };
+  return fetch(`${config.API_URL}/admin/users/${userId}`, requestOptions).then(
+    handleResponse
+  );
+}
+async function deleteUser(userId) {
+  const requestOptions = {
+    method: "DELETE",
+    headers: authHeader(),
+  };
+  return fetch(`${config.API_URL}/admin/users/${userId}`, requestOptions).then(
+    handleResponse
+  );
+}
+async function getUsers() {
+  const requestOptions = {
+    method: "GET",
+    headers: authHeader(),
+  };
+
+  return fetch(`${config.API_URL}/admin/users`, requestOptions).then(
+    handleResponse
+  );
+}
+
+async function getUserDetails(userId) {
+  const requestOptions = {
+    method: "GET",
+    headers: authHeader(),
+  };
+
+  return fetch(`${config.API_URL}/admin/users/${userId}`, requestOptions).then(
     handleResponse
   );
 }

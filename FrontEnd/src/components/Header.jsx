@@ -114,6 +114,14 @@ function Header(props) {
                         <hr className="dropdown-divider" />
                       </li>
                       <li>
+                        <Link className="dropdown-item" to="/admin/users">
+                          Manage Users
+                        </Link>
+                      </li>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <li>
                         <Link className="dropdown-item" to="/admin/products">
                           Manage Products
                         </Link>

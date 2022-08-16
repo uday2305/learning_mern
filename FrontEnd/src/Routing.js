@@ -20,9 +20,10 @@ import {
   EditProduct,
   ManageProducts,
 } from "./pages/productManagement";
+import { ManageUsers, AddUser, EditUser } from "./pages/userManagement";
 import { ManageOrders } from "./components/ManageOrders";
 
-import { PrivateRoute } from "./helperComponents";
+import { PrivateRoute, PrivateAdminRoute } from "./helperComponents";
 import { history } from "./helpers";
 
 function Routing() {
@@ -49,22 +50,34 @@ function Routing() {
           <Route path="/profile" element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
-          <Route path="/admin/add-new-product" element={<PrivateRoute />}>
+          <Route path="/admin/add-new-product" element={<PrivateAdminRoute />}>
             <Route path="/admin/add-new-product" element={<AddProduct />} />
           </Route>
           <Route
             path="/admin/products/:product_id/edit"
-            element={<PrivateRoute />}
+            element={<PrivateAdminRoute />}
           >
             <Route
               path="/admin/products/:product_id/edit"
               element={<EditProduct />}
             />
           </Route>
-          <Route path="/admin/products" element={<PrivateRoute />}>
+          <Route path="/admin/add-new-user" element={<PrivateAdminRoute />}>
+            <Route path="/admin/add-new-user" element={<AddUser />} />
+          </Route>
+          <Route
+            path="/admin/users/:user_id/edit"
+            element={<PrivateAdminRoute />}
+          >
+            <Route path="/admin/users/:user_id/edit" element={<EditUser />} />
+          </Route>
+          <Route path="/admin/products" element={<PrivateAdminRoute />}>
             <Route path="/admin/products" element={<ManageProducts />} />
           </Route>
-          <Route path="/admin/orders" element={<PrivateRoute />}>
+          <Route path="/admin/users" element={<PrivateAdminRoute />}>
+            <Route path="/admin/users" element={<ManageUsers />} />
+          </Route>
+          <Route path="/admin/orders" element={<PrivateAdminRoute />}>
             <Route path="/admin/orders" element={<ManageOrders />} />
           </Route>
           <Route path="/orders" element={<PrivateRoute />}>

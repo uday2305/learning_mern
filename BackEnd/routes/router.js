@@ -80,4 +80,30 @@ router.delete(
   controller.deleteOrder
 );
 
+router.get(
+  "/api/v1/admin/users",
+  controller.checkAuthorization,
+  controller.checkIsAdmin,
+  controller.getAllUsers
+);
+router.get(
+  "/api/v1/admin/users/:id",
+  controller.checkAuthorization,
+  controller.checkIsAdmin,
+  controller.getUserDetails
+);
+
+router.patch(
+  "/api/v1/admin/users/:id",
+  controller.checkAuthorization,
+  controller.checkIsAdmin,
+  controller.editUser
+);
+router.delete(
+  "/api/v1/admin/users/:id",
+  controller.checkAuthorization,
+  controller.checkIsAdmin,
+  controller.deleteUser
+);
+
 module.exports = router;

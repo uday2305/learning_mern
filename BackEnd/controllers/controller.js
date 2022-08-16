@@ -369,6 +369,70 @@ exports.deleteOrder = async (req, res) => {
   }
 };
 
+exports.editUser = async (req, res) => {
+  try {
+    await userModel.updateOne(
+      { _id: req.params.id },
+      { $set: req.body.user },
+      { new: true }
+    );
+    res
+      .status(200)
+      .json({ status: "success", message: "User modified successfully" });
+  } catch (ex) {
+    res.status(500).json({
+      status: "failure",
+      message: "exception while modifying the User : " + ex,
+    });
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  try {
+    let deletionResponse = await userModel.deleteOne({ _id: req.params.id });
+    if (deletionResponse.deletedCount === 1) {
+      res
+        .status(200)
+        .json({ status: "success", message: "User deleted successfully" });
+    } else {
+      res.status(404).json({
+        status: "failure",
+        message: "failure",
+        message: "No User exists to delete",
+      });
+    }
+  } catch (ex) {
+    res.status(500).json({
+      status: "failure",
+      message: "exception while deleting the User : " + ex,
+    });
+  }
+};
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    let userList = await userModel.find().lean();
+    res.status(200).json({ status: "success", users: userList });
+  } catch (ex) {
+    res.status(500).json({
+      status: "failure",
+      message: "exception while retrieving the products : " + ex,
+    });
+  }
+};
+exports.getUserDetails = async (req, res) => {
+  try {
+    let user = await userModel.findOne({ _id: req.params.id }).lean();
+    delete user.password;
+    res.status(200).json({ status: "success", user });
+  } catch (ex) {
+    res.status(500).json({
+      status: "failure",
+      message: "exception while retrieving the user : " + ex,
+    });
+  }
+};
+
 exports.checkAuthorization = async (req, res, next) => {
   try {
     let authHeader = req.headers.authorization;
@@ -397,10 +461,10 @@ exports.checkIsAdmin = async (req, res, next) => {
     if (req.loggedUser.isAdmin) {
       next();
     } else {
-      res.status(401).json({ status: "UnAuthorized" });
+      res.status(401).json({ status: "UnAuthorized - Not Admin" });
     }
   } catch (ex) {
-    res.status(401).json({ status: "UnAuthorized" });
+    res.status(401).json({ status: "UnAuthorized  - Not Admin" });
   }
 };
 
