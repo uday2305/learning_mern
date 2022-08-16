@@ -8,20 +8,18 @@ import { Register } from "./pages/registration";
 import { Profile } from "./pages/userProfile";
 import { CheckOut } from "./pages/checkout";
 
-import { HomePage } from "./components/HomePage";
-import { Cart } from "./components/Cart";
-import { Orders } from "./components/Orders";
-import { Logout } from "./components/Logout";
-import { ProductCategories } from "./components/ProductCategories";
-import { ProductDetails } from "./components/ProductDetails";
-import { OrderDetails } from "./components/OrderDetails";
+import { HomePage } from "./pages/home";
+import { Cart } from "./pages/cart";
+import { Orders, OrderDetails, ManageOrders } from "./pages/orderManagement";
+import { Logout } from "./pages/logout/Logout";
+import { ProductCategories } from "./pages/categories";
+import { ProductDetails } from "./pages/productDetails";
 import {
   AddProduct,
   EditProduct,
   ManageProducts,
 } from "./pages/productManagement";
 import { ManageUsers, AddUser, EditUser } from "./pages/userManagement";
-import { ManageOrders } from "./components/ManageOrders";
 
 import { PrivateRoute, PrivateAdminRoute } from "./helperComponents";
 import { history } from "./helpers";

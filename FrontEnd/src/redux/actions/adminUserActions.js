@@ -1,5 +1,5 @@
 import { adminUserConstants } from "../constants";
-import { userService } from "../services";
+import { userService } from "../../services";
 import { alertActions, redirectActions } from "./";
 
 export const adminUserActions = {

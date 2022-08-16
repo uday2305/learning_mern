@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { userActions } from "../../actions";
+import { userActions } from "../../redux/actions";
 import ProfileAddressForm from "./ProfileAddress";
 const Profile = (props) => {
   const [showEditForm, setShowEditForm] = useState(false);

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { alertActions } from "../actions";
+import { alertActions } from "../../redux/actions";
 import { useSelector, connect } from "react-redux";
-import { displayAsCurrency } from "../helpers";
+import { displayAsCurrency } from "../../helpers";
 
 const OrderDetails = (props) => {
   useEffect(() => {

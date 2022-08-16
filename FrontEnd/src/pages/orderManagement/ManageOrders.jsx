@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { orderActions, alertActions } from "../actions";
+import { orderActions, alertActions } from "../../redux/actions";
 import { connect } from "react-redux";
 const ManageOrders = (props) => {
   const { alert, orderListUpdateRequired } = props;

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { orderActions, alertActions } from "../actions";
+import { orderActions, alertActions } from "../../redux/actions";
 import { connect } from "react-redux";
 
 const Orders = (props) => {

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, connect } from "react-redux";
-import { displayAsCurrency } from "../helpers";
-import { cartActions, productActions, alertActions } from "../actions";
+import { displayAsCurrency } from "../../helpers";
+import { cartActions, productActions, alertActions } from "../../redux/actions";
 const ProductCategories = (props) => {
   useEffect(() => {
     // code to run on component mount

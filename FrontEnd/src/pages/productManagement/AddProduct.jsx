@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { productActions,alertActions } from '../../actions';
+import { productActions,alertActions } from '../../redux/actions';
 import { connect } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import ProductForm from './ProductForm';

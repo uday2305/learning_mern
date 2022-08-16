@@ -1,4 +1,4 @@
-import { orderService } from "../services";
+import { orderService } from "../../services";
 import { redirectActions, alertActions, cartActions } from "./";
 import { orderConstants } from "../constants";
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { userActions } from "../../actions";
+import { userActions } from "../../redux/actions";
 import CheckOutForm from "./CheckOutForm";
 
 const CheckOutLoggedIn = (props) => {

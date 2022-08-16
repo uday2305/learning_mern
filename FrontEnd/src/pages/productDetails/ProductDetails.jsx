@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { productActions, cartActions } from "../actions";
+import { productActions, cartActions } from "../../redux/actions";
 import { connect } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { displayAsCurrency } from "../helpers";
+import { displayAsCurrency } from "../../helpers";
 
 const ProductDetails = (props) => {
   let navigate = useNavigate();

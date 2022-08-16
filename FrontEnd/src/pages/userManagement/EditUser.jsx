@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { adminUserActions, alertActions } from "../../actions";
+import { adminUserActions, alertActions } from "../../redux/actions";
 import { connect } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import UserForm from "./UserForm";

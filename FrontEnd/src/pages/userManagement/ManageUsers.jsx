@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { adminUserActions, alertActions } from "../../actions";
+import { adminUserActions, alertActions } from "../../redux/actions";
 import { connect } from "react-redux";
 const ManageUsers = (props) => {
   const { alert, userListUpdateRequired } = props;

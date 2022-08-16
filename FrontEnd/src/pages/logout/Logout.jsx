@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { userActions } from "../actions";
+import { userActions } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { cartActions, alertActions } from "../actions";
+import { cartActions, alertActions } from "../../redux/actions";
 import { useNavigate, Link } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
-import { displayAsCurrency } from "../helpers";
+import { displayAsCurrency } from "../../helpers";
 const Cart = (props) => {
   let navigate = useNavigate();
   const cartItems = useSelector((state) => state.getCartItems);

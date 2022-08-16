@@ -1,7 +1,7 @@
 import { productConstants } from "../constants";
 import { alertActions } from "./";
 import { redirectActions } from "./";
-import { productService } from "../services";
+import { productService } from "../../services";
 
 export const productActions = {
   addProduct,

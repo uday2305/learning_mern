@@ -1,5 +1,5 @@
 import { cartConstants } from "../constants";
-import { cartService } from "../services";
+import { cartService } from "../../services";
 import { alertActions } from "./";
 export const cartActions = {
   addItemToCart,

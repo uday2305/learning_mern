@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { cartActions, redirectActions } from "../actions";
+import { cartActions, redirectActions } from "../redux/actions";
 import { connect, useSelector } from "react-redux";
 
 function Header(props) {
