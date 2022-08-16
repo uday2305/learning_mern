@@ -14,6 +14,8 @@ import { Orders, OrderDetails, ManageOrders } from "./pages/orderManagement";
 import { Logout } from "./pages/logout/Logout";
 import { ProductCategories } from "./pages/categories";
 import { ProductDetails } from "./pages/productDetails";
+import { PageNotFound } from "./pages/pageNotFound";
+import { UnAuthorized } from "./pages/unAuthorized";
 import {
   AddProduct,
   EditProduct,
@@ -87,6 +89,11 @@ function Routing() {
           <Route path="/logout" element={<PrivateRoute />}>
             <Route path="/logout" element={<Logout />}></Route>
           </Route>
+          <Route path="/logout" element={<PrivateRoute />}>
+            <Route path="/logout" element={<Logout />}></Route>
+          </Route>
+          <Route path="/un-authorized" element={<UnAuthorized/>} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
       <Footer />

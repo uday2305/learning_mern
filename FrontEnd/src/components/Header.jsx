@@ -85,17 +85,17 @@ function Header(props) {
                 </Link>
               </li>
               {props.user ? (
-                <li className="nav-item dropdown me-5">
-                  <Link
-                    className="nav-link dropdown-toggle fs-4"
-                    to="/"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    {props.user?.firstName}
-                  </Link>
-                  {props.user?.isAdmin ? (
+                props.user.isAdmin ? (
+                  <li className="nav-item dropdown me-5">
+                    <Link
+                      className="nav-link dropdown-toggle fs-4"
+                      to="/"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {props.user?.firstName}
+                    </Link>
                     <ul className="dropdown-menu">
                       <li>
                         <Link className="dropdown-item" to="/profile">
@@ -135,7 +135,18 @@ function Header(props) {
                         </Link>
                       </li>
                     </ul>
-                  ) : (
+                  </li>
+                ) : (
+                  <li className="nav-item dropdown me-5">
+                    <Link
+                      className="nav-link dropdown-toggle fs-4"
+                      to="/"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {props.user?.firstName}
+                    </Link>
                     <ul className="dropdown-menu">
                       <li>
                         <Link className="dropdown-item" to="/profile">
@@ -159,8 +170,8 @@ function Header(props) {
                         </Link>
                       </li>
                     </ul>
-                  )}
-                </li>
+                  </li>
+                )
               ) : (
                 <li className="nav-item">
                   <Link
