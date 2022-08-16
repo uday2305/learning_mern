@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "62fbed58d582154a9bfd4764"
+  },
+  "user": {
+    "$oid": "62fbe8e4d582154a9bfd471c"
+  },
+  "userEmail": "az@gmail.com",
+  "isDelivered": true,
+  "orderDeliveredOn": null,
+  "cart": [
+    {
+      "productId": {
+        "$oid": "62f57b79ef2bf3fa18eecb9f"
+      },
+      "quantity": 1,
+      "price": 199,
+      "productName": "Lenovo ThinkVision Monitor",
+      "_id": {
+        "$oid": "62fbed58d582154a9bfd4765"
+      }
+    }
+  ],
+  "orderPlacedOn": {
+    "$date": {
+      "$numberLong": "1660677464942"
+    }
+  }
+}]

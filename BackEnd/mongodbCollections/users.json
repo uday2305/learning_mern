@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "62fbe8e4d582154a9bfd471c"
+  },
+  "firstName": "a",
+  "lastName": "z",
+  "password": "$2a$10$z6HF3rOWwv.8xQwBSJ0L5eAu4c89PpiQF3Wzd0Dy6w2fv6QzdAmXG",
+  "isAdmin": false,
+  "email": "az@gmail.com",
+  "profileImage": "",
+  "address": {
+    "streetAddress": "xyz lane",
+    "city": "Washington",
+    "state": "DC",
+    "zipcode": "98485",
+    "_id": {
+      "$oid": "62fbeaa8d582154a9bfd4736"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62fbfb8ad582154a9bfd4781"
+  },
+  "firstName": "Admin",
+  "lastName": "LN",
+  "password": "$2a$10$rETcGIeTNdJ29YjAoQ8aZ.vAsn8YMX1y4rvTMyNjdY/JFhKW2KkEe",
+  "isAdmin": true,
+  "email": "admin@gmail.com",
+  "profileImage": "",
+  "address": {
+    "_id": {
+      "$oid": "62fbfb8ad582154a9bfd4780"
+    }
+  }
+}]
