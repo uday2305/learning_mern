@@ -191,7 +191,7 @@ PATCH http://localhost:8080/api/v1/admin/users/<someUserId> HTTP/1.1
 Authorization: {{accessToken}}
 content-type: application/json
 
-{"user":{"firstName":"Uday","lastName":"Pulavarthi","email":"test.email@gmail.com","isAdmin":false}}
+{"user":{"firstName":"test fn","lastName":"test ln","email":"test.email@gmail.com","isAdmin":false}}
 
 ###Delete User (LoggedIn Admin)
 DELETE  http://localhost:8080/api/v1/admin/users/<someUserId> HTTP/1.1
